@@ -1,0 +1,11 @@
+langchain
+langchain_core
+langchain_community
+chroma
+langchain_classic
+langchain_text_splitters
+pymupdf
+python-docx
+langchain_ollama
+langchain_chroma
+langchain_huggingface
