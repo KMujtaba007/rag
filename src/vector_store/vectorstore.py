@@ -13,8 +13,7 @@ class VectorStore:
         '''
         Creates retriever
         '''
-        self.vectorstore = Chroma(embedding_function= self.embeddings)
-        self.vectorstore.add_documents(documents = documents)
+        self.vectorstore = Chroma.from_documents(documents= documents,embedding=self.embeddings)
         self.retriever = self.vectorstore.as_retriever()
         
     def get_retriever(self):

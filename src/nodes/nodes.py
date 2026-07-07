@@ -1,13 +1,11 @@
 from src.state.rag_state import RAGState
 
-
-
 class RAGNodes:
     def __init__(self, retriever, llm):
         self.retriever = retriever
         self.llm = llm
     
-    def retriever(self, state: RAGState) -> RAGState:
+    def retrieve_document(self, state: RAGState) -> RAGState:
         docs = self.retriever.invoke(state.question)
         return RAGState(
             question = state.question,

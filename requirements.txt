@@ -9,3 +9,7 @@ python-docx
 langchain_ollama
 langchain_chroma
 langchain_huggingface
+pypdf
+sentence-transformers
+langchain-groq
+python-dotenv

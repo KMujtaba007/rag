@@ -94,5 +94,5 @@ class DocumentProcessor:
             List of Document
         '''
         
-        document_chunks = self.splitter.split_documents(documents= documents)
+        document_chunks = self.splitter.split_documents(documents= self.load_all_documents())
         return document_chunks
