@@ -1,5 +1,5 @@
 import streamlit as st
-from Config import Config
+from src.config.Config import Config
 from src.graph_builder.graph_builder import GraphBuilder
 from src.vector_store.vectorstore import VectorStore
 from src.document_ingestion.document_processor import DocumentProcessor
