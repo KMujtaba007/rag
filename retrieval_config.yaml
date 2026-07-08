@@ -1,0 +1,5 @@
+processor:
+  chunk_size: 200
+  chunk_overlap: 20
+  multi-threading: True
+  default_path: 'data/'

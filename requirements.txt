@@ -3,3 +3,8 @@ langchain-groq
 langchain-ollama
 langchain-huggingface
 streamlit
+langchain_text_splitters
+langchain-community
+python-dotenv
+chroma
+langchain-chroma
