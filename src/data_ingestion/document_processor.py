@@ -62,4 +62,6 @@ class DocumentProcessor:
         documents.extend(self.__load_text_files())
         documents.extend(self.__load_pdf_documents())
         documents.extend(self.__load_word_documents())
+        splitter = RecursiveCharacterTextSplitter()
+        documents = splitter.split_documents(documents = documents)
         return documents
