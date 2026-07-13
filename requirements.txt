@@ -1,11 +1,12 @@
 langchain
 langgraph
-langchain-openai
 langchain-huggingface
-python-dotenv
 langchain-text-splitters
 langchain_community
 langchain-chroma
 ipykernel
 streamlit
 pypdf
+langchain-ollama
+tiktoken
+sentence-transformers

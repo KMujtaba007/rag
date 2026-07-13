@@ -1,7 +1,10 @@
-from pydantic import BaseModel, Field
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from src.ragState import RAGState
-from typing_extensions import Literal
+from src.config_loader import load_config
+
+config = load_config(path = 'config/llm_config.yaml').load()
+model = config['model']
+temperature = config['temperature']
 
 GENERATE_PROMPT = (
     "You are an assistant for question-answering tasks. "
@@ -15,7 +18,8 @@ GENERATE_PROMPT = (
 )
 
 def response(state: RAGState):
-    llm = ChatOpenAI()
+    llm = ChatGroq(model= model, 
+                   temperature= temperature)
     question = state['messages'][0].content
     context = [doc.page_content for doc in state['documents']]
 
@@ -27,6 +31,3 @@ def response(state: RAGState):
         answer = answer,
         documents= state['documents']
     )
-
-# return {'messages': [response],
-#             'answer': answer}

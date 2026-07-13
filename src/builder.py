@@ -4,10 +4,9 @@ from src.generate_or_call_tool import respond_or_tool_call
 from src.vector_store import get_documents
 from src.response import response
 from langchain.messages import HumanMessage
+from IPython.display import display, Image
 
-
-
-def __build_graph():
+def build_graph():
     builder = StateGraph(state_schema= RAGState)
     builder.add_node(respond_or_tool_call)
     builder.add_node(get_documents)
@@ -34,12 +33,10 @@ def __build_graph():
     builder.add_edge('response', END)
     return builder.compile()
 
-def show_graph():
-    graph = __build_graph()
-    return graph.get_graph().draw_mermaid_png()
+def show_graph(graph):
+    return display(Image(graph.get_graph().draw_mermaid_png()))
 
-def run_graph(query: str):
-    graph = __build_graph()
+def run_graph(graph, query: str):
     init_state = RAGState(
         messages= [HumanMessage(content = query)],
         documents = None,

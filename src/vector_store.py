@@ -1,24 +1,25 @@
 from langchain_chroma import Chroma
-from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from functools import lru_cache
 from langchain.tools import tool
 from src.ingest import ingest
 from src.ragState import RAGState
-from dotenv import load_dotenv
 from src.config_loader import load_config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 config = load_config('config/embedding_config.yaml').load()['environment']
 search_type = config['search_type']
 k = config['search_result_count']
 score_threshold = config['score_threshold']
-load_dotenv()
-
+model = config['model']
 
 docs = ingest(path = 'data')
 @lru_cache(maxsize= 2)
 def load_vector_store():
     '''Creates a retriever for the Vector Store'''
-    embedding = OpenAIEmbeddings()
+    embedding = HuggingFaceEmbeddings(model_name = model)
     vector_store = Chroma.from_documents(documents = docs,embedding= embedding)
     return vector_store
 
